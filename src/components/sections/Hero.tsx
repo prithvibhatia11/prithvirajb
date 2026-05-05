@@ -82,7 +82,6 @@ export default function Hero() {
             animate={{ opacity: 1, scale: 1 }}
             transition={{ delay: 0.4, duration: 0.8 }}
             className="absolute inset-0 w-full h-full object-contain"
-            style={{ mixBlendMode: "luminosity", filter: "contrast(1.1)" }}
           />
           {badges.map((b, i) => (
             <motion.div
