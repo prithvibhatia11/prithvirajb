@@ -42,7 +42,7 @@ export default function Nav() {
           href="#"
           data-hover
           whileHover={{
-            scale: 1.08,
+            scale: 2,
             rotate: [0, -6, 6, -6, 6, 0],
             transition: { rotate: { repeat: Infinity, duration: 0.4 }, scale: { type: "spring" } },
           }}
