@@ -1,16 +1,32 @@
-// Update this page (the content is just a fallback if you fail to update the page)
+import Nav from "@/components/Nav";
+import CustomCursor from "@/components/CustomCursor";
+import Hero from "@/components/sections/Hero";
+import About from "@/components/sections/About";
+import Experience from "@/components/sections/Experience";
+import Projects from "@/components/sections/Projects";
+import Achievements from "@/components/sections/Achievements";
+import Foundation from "@/components/sections/Foundation";
+import Contact from "@/components/sections/Contact";
 
-// IMPORTANT: Fully REPLACE this with your own code
-const PlaceholderIndex = () => {
-  // PLACEHOLDER: Replace this entire return statement with the user's app.
-  // The inline background color is intentionally not part of the design system.
+const Index = () => {
   return (
-    <div className="flex min-h-screen items-center justify-center" style={{ backgroundColor: '#fcfbf8' }}>
-      <img data-lovable-blank-page-placeholder="REMOVE_THIS" src="/placeholder.svg" alt="Your app will live here!" />
+    <div className="relative min-h-screen bg-background text-foreground">
+      <CustomCursor />
+      <Nav />
+      <main>
+        <Hero />
+        <About />
+        <Experience />
+        <Projects />
+        <Achievements />
+        <Foundation />
+        <Contact />
+      </main>
+      <footer className="border-t border-primary/20 py-8 text-center text-sm text-muted-foreground">
+        © 2026 Prithviraj Bhatia. Built with intent.
+      </footer>
     </div>
   );
 };
-
-const Index = PlaceholderIndex;
 
 export default Index;
