@@ -15,7 +15,7 @@ export default function About() {
       <div className="container relative">
         <h2
           className="absolute -top-4 left-0 font-display font-bold text-[180px] md:text-[280px] leading-none pointer-events-none select-none"
-          style={{ color: "hsl(24 100% 50% / 0.08)" }}
+          style={{ color: "hsl(24 100% 50% / 0.14)" }}
         >
           About
         </h2>
