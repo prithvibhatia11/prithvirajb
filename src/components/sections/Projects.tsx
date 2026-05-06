@@ -108,15 +108,14 @@ export default function Projects() {
                     }`}
                     whileHover={!isExp ? { scale: 1.02 } : {}}
                   >
-                    <motion.img
-                      layout
+                    <img
                       src={p.logo}
                       alt=""
                       aria-hidden
-                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-opacity duration-300"
+                      className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all duration-500"
                       style={{
-                        width: isExp ? "55%" : "70%",
-                        opacity: isExp ? 0.1 : 0.08,
+                        width: isExp ? "45%" : "70%",
+                        opacity: isExp ? 0.22 : 0.18,
                       }}
                     />
                     <div className="relative z-10 p-6 md:p-8">
