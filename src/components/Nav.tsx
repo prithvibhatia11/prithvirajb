@@ -44,7 +44,7 @@ export default function Nav() {
           whileHover={{
             scale: 2,
             rotate: [0, -6, 6, -6, 6, 0],
-            transition: { rotate: { repeat: Infinity, duration: 0.4 }, scale: { type: "spring" } },
+            transition: { rotate: { duration: 0.5, ease: "easeInOut" }, scale: { type: "spring" } },
           }}
           style={{ filter: "drop-shadow(0 0 12px hsl(24 100% 50% / 0.5))" }}
           className="text-2xl font-bold text-primary font-display"
@@ -60,7 +60,7 @@ export default function Nav() {
                 whileHover={{
                   scale: 1.5,
                   rotate: [0, -6, 6, -6, 6, 0],
-                  transition: { rotate: { repeat: Infinity, duration: 0.4 }, scale: { type: "spring" } },
+                  transition: { rotate: { duration: 0.5, ease: "easeInOut" }, scale: { type: "spring" } },
                 }}
                 className={`inline-block text-sm uppercase tracking-wider transition-colors ${
                   active === l.href ? "text-primary" : "text-foreground/70 hover:text-foreground"
