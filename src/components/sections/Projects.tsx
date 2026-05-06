@@ -3,7 +3,9 @@ import { motion, AnimatePresence, LayoutGroup } from "framer-motion";
 import sortd from "@/assets/sortd-logo.png";
 import bluetokai from "@/assets/bluetokai-logo.png";
 import samsara from "@/assets/samsara-logo.png";
+import PdfModal from "@/components/PdfModal";
 
+interface ProjectAsset { label: string; src: string; }
 interface Project {
   id: string;
   logo: string;
@@ -15,6 +17,7 @@ interface Project {
   metrics: string[];
   result?: string;
   role: string;
+  assets?: ProjectAsset[];
 }
 
 const projects: Project[] = [
@@ -22,9 +25,9 @@ const projects: Project[] = [
     id: "sortd",
     logo: sortd,
     name: "Sort'd Enterprises",
-    domain: "D2C · E-commerce · Finance",
-    duration: "July 2025 – February 2026",
-    one: "Built a D2C brand from zero — product, website, content, ads, supply chain, and financials — scaled to ₹70 lakhs in revenue.",
+    domain: "D2C, E-commerce, Finance",
+    duration: "July 2025, February 2026",
+    one: "Built a D2C brand from zero, product, website, content, ads, supply chain, and financials, scaled to ₹70 lakhs in revenue.",
     story: "Started with a local market, a ₹800 instant print camera, and an idea: position it as the affordable, retro alternative to the Polaroid InstaX. Built a Shopify store, shot an organic Instagram reel, and ran Meta ads that scaled from ₹1,000/day to ₹35,000/day. Masters' Union's founder challenged the top 5 teams to hit ₹30 lakhs in 30 days. We were the only team to accept, and did it in 24 days.",
     metrics: ["₹70L Revenue", "₹30L in 24 Days", "11x ROAS (peak)", "21M+ Impressions", "₹700 CAC"],
     role: "Operations management, financial statements, unit economics modelling, co-led ad scale decision to ₹35K/day",
@@ -33,33 +36,39 @@ const projects: Project[] = [
     id: "bluetokai",
     logo: bluetokai,
     name: "Blue Tokai Coffee Roasters",
-    domain: "Brand Strategy · Research · Finance",
-    duration: "October – December 2025",
-    one: "1st place among 200+ participants — decoded why Blue Tokai was losing Gen Z and built a strategy to fix it.",
-    story: "Blue Tokai had strong millennial loyalty but was invisible to Gen Z. My team went on the ground across Gurugram, interviewing 270+ Gen Z consumers. Finding: high access, low social relevance. Built a two-tier strategy — immediate action levers and long-term structural plays including Blue Tokai 2.0 concept stores. Financial feasibility models made recommendations actionable, not just creative.",
+    domain: "Brand Strategy, Research, Finance",
+    duration: "October, December 2025",
+    one: "1st place among 200+ participants, decoded why Blue Tokai was losing Gen Z and built a strategy to fix it.",
+    story: "Blue Tokai had strong millennial loyalty but was invisible to Gen Z. My team went on the ground across Gurugram, interviewing 270+ Gen Z consumers. Finding: high access, low social relevance. Built a two-tier strategy, immediate action levers and long-term structural plays including Blue Tokai 2.0 concept stores. Financial feasibility models made recommendations actionable, not just creative.",
     metrics: ["270+ Interviews", "200+ Participants", "1st Place"],
-    result: "🏆 1st Place — Presented to Blue Tokai Leadership",
+    result: "🏆 1st Place, Presented to Blue Tokai Leadership",
     role: "Primary research co-lead, brand perception mapping, financial feasibility analysis",
+    assets: [{ label: "See the Winning Deck", src: "/decks/bluetokai-deck.pdf" }],
   },
   {
     id: "samsara",
     logo: samsara,
     name: "Samsara Gin",
-    domain: "Market Research · GTM · Analytics",
+    domain: "Market Research, GTM, Analytics",
     duration: "January 2026",
-    one: "Runner-up among 60+ teams — rigorous market research to crack why Indian consumers default to foreign brands for premium gin.",
-    story: "End-to-end research process — secondary research, in-depth interviews, focused group discussions. Built a 5-point interval scale survey with 100+ responses and ran factor analysis, chi-square tests, and cluster analysis to identify super-variables and consumer clusters. Built a full GTM strategy covering digital awareness, on-trade activation, and high-status placements.",
+    one: "Runner-up among 60+ teams, rigorous market research to crack why Indian consumers default to foreign brands for premium gin.",
+    story: "End-to-end research process, secondary research, in-depth interviews, focused group discussions. Built a 5-point interval scale survey with 100+ responses and ran factor analysis, chi-square tests, and cluster analysis to identify super-variables and consumer clusters. Built a full GTM strategy covering digital awareness, on-trade activation, and high-status placements.",
     metrics: ["100+ Survey Responses", "60+ Teams", "Runner-up"],
-    result: "🥈 Runner-up — Certified by Masters' Union",
+    result: "🥈 Runner-up, Certified by Masters' Union",
     role: "End-to-end research, statistical analysis, consumer persona, GTM co-creation",
+    assets: [
+      { label: "See the Winning Deck", src: "/decks/samsara-deck.pdf" },
+      { label: "Where's the Proof?", src: "/decks/samsara-certificate.pdf" },
+    ],
   },
 ];
 
 export default function Projects() {
   const [expanded, setExpanded] = useState<string | null>(null);
+  const [pdf, setPdf] = useState<string | null>(null);
 
   return (
-    <section id="projects" className="py-24">
+    <section id="projects" className="py-14 md:py-16">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -138,6 +147,20 @@ export default function Projects() {
                             <p className="text-sm text-muted-foreground">
                               <span className="text-foreground font-medium">My Role: </span>{p.role}
                             </p>
+                            {p.assets && (
+                              <div className="mt-5 flex flex-wrap gap-3">
+                                {p.assets.map((a) => (
+                                  <button
+                                    key={a.label}
+                                    data-hover
+                                    onClick={() => setPdf(a.src)}
+                                    className="px-5 py-2.5 rounded-full border border-primary text-primary text-sm uppercase tracking-wider font-medium hover:bg-primary hover:text-primary-foreground transition-colors"
+                                  >
+                                    {a.label}
+                                  </button>
+                                ))}
+                              </div>
+                            )}
                           </motion.div>
                         )}
                       </AnimatePresence>
@@ -156,6 +179,7 @@ export default function Projects() {
           </div>
         </LayoutGroup>
       </div>
+      <PdfModal src={pdf} onClose={() => setPdf(null)} />
     </section>
   );
 }
