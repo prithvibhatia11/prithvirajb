@@ -54,15 +54,20 @@ export default function Nav() {
         <ul className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <li key={l.href}>
-              <a
+              <motion.a
                 href={l.href}
                 data-hover
-                className={`text-sm uppercase tracking-wider transition-colors ${
+                whileHover={{
+                  scale: 1.5,
+                  rotate: [0, -6, 6, -6, 6, 0],
+                  transition: { rotate: { repeat: Infinity, duration: 0.4 }, scale: { type: "spring" } },
+                }}
+                className={`inline-block text-sm uppercase tracking-wider transition-colors ${
                   active === l.href ? "text-primary" : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 {l.label}
-              </a>
+              </motion.a>
             </li>
           ))}
         </ul>
