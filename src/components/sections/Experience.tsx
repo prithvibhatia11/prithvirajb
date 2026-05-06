@@ -38,7 +38,7 @@ const cards = [
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-24">
+    <section id="experience" className="py-14 md:py-16">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

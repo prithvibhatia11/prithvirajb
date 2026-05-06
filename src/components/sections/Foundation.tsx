@@ -39,7 +39,7 @@ const skills = [
 
 export default function Foundation() {
   return (
-    <section id="foundation" className="py-24">
+    <section id="foundation" className="py-14 md:py-16">
       <div className="container">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

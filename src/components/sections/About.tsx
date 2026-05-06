@@ -11,22 +11,24 @@ const item: Variants = {
 
 export default function About() {
   return (
-    <section id="about" className="relative py-32 overflow-hidden">
+    <section id="about" className="relative py-16 md:py-20 overflow-hidden">
       <div className="container relative">
-        <h2
-          className="absolute -top-4 left-0 font-display font-bold text-[180px] md:text-[280px] leading-none pointer-events-none select-none"
+        <span
+          aria-hidden
+          className="absolute inset-0 flex items-center justify-center font-display font-bold text-[260px] md:text-[440px] leading-none pointer-events-none select-none"
           style={{ color: "hsl(24 100% 50% / 0.14)" }}
         >
-          About
-        </h2>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 relative">
-          <div className="hidden lg:block" />
+          A
+        </span>
+        <div className="relative">
+          <p className="label-accent mb-3">Audited. Verified. Human.</p>
+          <h2 className="font-display font-bold text-4xl md:text-6xl mb-10">About</h2>
           <motion.div
             variants={stagger}
             initial="hidden"
             whileInView="show"
             viewport={{ once: true, margin: "-100px" }}
-            className="space-y-6 text-foreground/85 text-lg leading-relaxed"
+            className="space-y-6 text-foreground/85 text-lg leading-relaxed max-w-5xl"
           >
             <motion.p variants={item}>
               I'm a Chartered Accountant who qualified in his first attempt, spent three years of articleship auditing listed companies and PSUs across India, and then deliberately chose to expand beyond the numbers. I grew up in Rajnandgaon, Chhattisgarh, where resources were limited but ambition wasn't. I topped my district in mathematics, earned merit scholarships, and eventually found my way into finance through a single conversation that made accounting click.
@@ -36,9 +38,6 @@ export default function About() {
             </motion.p>
             <motion.p variants={item} className="italic text-muted-foreground">
               When I'm not in a spreadsheet, I'm on a cricket pitch, a badminton court, or convincing my friends that my version of the plan is better than theirs. (It usually is.)
-            </motion.p>
-            <motion.p variants={item} className="italic text-muted-foreground">
-              I also believe in giving back, I've run rural education outreach in Naxal-affected areas, reaching 100+ students across Zila Parishad schools.
             </motion.p>
           </motion.div>
         </div>
