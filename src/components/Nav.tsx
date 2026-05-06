@@ -41,11 +41,8 @@ export default function Nav() {
         <motion.a
           href="#"
           data-hover
-          whileHover={{
-            scale: 2,
-            rotate: [0, -6, 6, -6, 6, 0],
-            transition: { rotate: { duration: 0.5, ease: "easeInOut" }, scale: { type: "spring" } },
-          }}
+          whileHover={{ scale: 2 }}
+          transition={{ type: "spring", stiffness: 300, damping: 15 }}
           style={{ filter: "drop-shadow(0 0 12px hsl(24 100% 50% / 0.5))" }}
           className="text-2xl font-bold text-primary font-display"
         >
@@ -54,20 +51,15 @@ export default function Nav() {
         <ul className="hidden md:flex items-center gap-8">
           {links.map((l) => (
             <li key={l.href}>
-              <motion.a
+              <a
                 href={l.href}
                 data-hover
-                whileHover={{
-                  scale: 1.5,
-                  rotate: [0, -6, 6, -6, 6, 0],
-                  transition: { rotate: { duration: 0.5, ease: "easeInOut" }, scale: { type: "spring" } },
-                }}
                 className={`inline-block text-sm uppercase tracking-wider transition-colors ${
                   active === l.href ? "text-primary" : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 {l.label}
-              </motion.a>
+              </a>
             </li>
           ))}
         </ul>
