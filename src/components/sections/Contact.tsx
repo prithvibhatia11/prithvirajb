@@ -128,17 +128,6 @@ export default function Contact() {
                   <email.icon className="h-5 w-5 text-primary" />
                   <span>{email.label}</span>
                 </motion.a>
-                <motion.button
-                  onClick={() => setOpen(false)}
-                  data-hover
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ delay: 0.25 }}
-                  className="text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground/80 transition-colors"
-                >
-                  Close
-                </motion.button>
               </motion.div>
             )}
           </AnimatePresence>
