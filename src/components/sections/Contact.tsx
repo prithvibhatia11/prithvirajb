@@ -55,58 +55,94 @@ export default function Contact() {
         >
           Whether it's a role, a collaboration, or just a conversation, I'm always open. Reach out and let's see where it goes.
         </motion.p>
-        <button
-          ref={btnRef}
-          onClick={handleClick}
-          data-hover
-          className="inline-block px-8 py-4 rounded-full bg-primary text-primary-foreground text-base uppercase tracking-wider font-semibold hover:shadow-[0_15px_40px_-5px_hsl(24_100%_50%/0.6)] transition-shadow"
-        >
-          Get In Touch
-        </button>
-
-        <AnimatePresence>
-          {open && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: "auto" }}
-              exit={{ opacity: 0, height: 0 }}
-              transition={{ duration: 0.35 }}
-              className="overflow-hidden"
-            >
-              <div className="flex flex-col items-center gap-4 mt-10">
-                {rows.map(({ icon: Icon, label, href, italic }, i) => (
+        <div className="relative inline-flex flex-col items-center">
+          <div className="grid grid-cols-3 items-center gap-8 md:gap-16">
+            <div className="flex justify-end min-w-[180px]">
+              <AnimatePresence>
+                {open && (
                   <motion.a
-                    key={label}
-                    href={href}
+                    href={linkedin.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
                     data-hover
-                    target={href.startsWith("http") ? "_blank" : undefined}
-                    rel={href.startsWith("http") ? "noopener noreferrer" : undefined}
-                    initial={{ opacity: 0, y: 20 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: i * 0.08, type: "spring", stiffness: 220, damping: 20 }}
-                    className="group inline-flex items-center gap-3 text-foreground/85 hover:text-primary transition-colors"
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: 20 }}
+                    transition={{ delay: 0.08, type: "spring", stiffness: 220, damping: 20 }}
+                    className="group inline-flex items-center gap-2 text-foreground/85 hover:text-primary transition-colors"
                   >
-                    <Icon className="h-5 w-5 text-primary" />
-                    <span className={`relative ${italic ? "italic underline" : ""}`}>
-                      {label}
-                      <span className="absolute left-0 -bottom-0.5 h-px w-0 bg-primary group-hover:w-full transition-[width] duration-300" />
-                    </span>
+                    <linkedin.icon className="h-5 w-5 text-primary" />
+                    <span className="italic underline">{linkedin.label}</span>
                   </motion.a>
-                ))}
+                )}
+              </AnimatePresence>
+            </div>
+
+            <button
+              ref={btnRef}
+              onClick={handleClick}
+              data-hover
+              className="px-8 py-4 rounded-full bg-primary text-primary-foreground text-base uppercase tracking-wider font-semibold hover:shadow-[0_15px_40px_-5px_hsl(24_100%_50%/0.6)] transition-shadow whitespace-nowrap"
+            >
+              Get In Touch
+            </button>
+
+            <div className="flex justify-start min-w-[180px]">
+              <AnimatePresence>
+                {open && (
+                  <motion.a
+                    href={phone.href}
+                    data-hover
+                    initial={{ opacity: 0, x: -20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    exit={{ opacity: 0, x: -20 }}
+                    transition={{ delay: 0.16, type: "spring", stiffness: 220, damping: 20 }}
+                    className="group inline-flex items-center gap-2 text-foreground/85 hover:text-primary transition-colors"
+                  >
+                    <phone.icon className="h-5 w-5 text-primary" />
+                    <span>{phone.label}</span>
+                  </motion.a>
+                )}
+              </AnimatePresence>
+            </div>
+          </div>
+
+          <AnimatePresence>
+            {open && (
+              <motion.div
+                initial={{ opacity: 0, y: -10, height: 0 }}
+                animate={{ opacity: 1, y: 0, height: "auto" }}
+                exit={{ opacity: 0, y: -10, height: 0 }}
+                transition={{ duration: 0.35 }}
+                className="flex flex-col items-center gap-3 mt-6"
+              >
+                <motion.a
+                  href={email.href}
+                  data-hover
+                  initial={{ opacity: 0, y: -10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ type: "spring", stiffness: 220, damping: 20 }}
+                  className="group inline-flex items-center gap-2 text-foreground/85 hover:text-primary transition-colors"
+                >
+                  <email.icon className="h-5 w-5 text-primary" />
+                  <span>{email.label}</span>
+                </motion.a>
                 <motion.button
                   onClick={() => setOpen(false)}
                   data-hover
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
-                  transition={{ delay: 0.3 }}
-                  className="mt-3 text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground/80 transition-colors"
+                  exit={{ opacity: 0 }}
+                  transition={{ delay: 0.25 }}
+                  className="text-xs uppercase tracking-wider text-muted-foreground hover:text-foreground/80 transition-colors"
                 >
                   Close
                 </motion.button>
-              </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </div>
       </div>
     </section>
   );
