@@ -92,7 +92,7 @@ export default function Projects() {
                       initial={{ opacity: 1 }}
                       animate={{ opacity: 0, scale: 0.8, width: 0 }}
                       exit={{ opacity: 0 }}
-                      transition={{ type: "spring", stiffness: 200, damping: 25 }}
+                      transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
                       className="hidden md:block overflow-hidden"
                     />
                   );
@@ -102,7 +102,7 @@ export default function Projects() {
                   <motion.article
                     key={p.id}
                     layout
-                    transition={{ type: "spring", stiffness: 200, damping: 26 }}
+                    transition={{ layout: { duration: 0.65, ease: [0.22, 1, 0.36, 1] }, default: { duration: 0.4, ease: "easeOut" } }}
                     className={`relative rounded-2xl glass overflow-hidden ${
                       isExp ? "md:col-span-3" : ""
                     }`}
@@ -129,7 +129,7 @@ export default function Projects() {
                             initial={{ opacity: 0, height: 0 }}
                             animate={{ opacity: 1, height: "auto" }}
                             exit={{ opacity: 0, height: 0 }}
-                            transition={{ duration: 0.4 }}
+                            transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], opacity: { duration: 0.4, delay: 0.1 } }}
                             className="overflow-hidden"
                           >
                             <p className="text-foreground/80 leading-relaxed mb-5">{p.story}</p>
