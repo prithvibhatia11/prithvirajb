@@ -3,11 +3,9 @@ import { AnimatePresence, motion } from "framer-motion";
 import confetti from "canvas-confetti";
 import { Mail, Phone, Linkedin } from "lucide-react";
 
-const rows = [
-  { icon: Mail, label: "tbm26prithviraj.bhatia@mastersunion.org", href: "mailto:tbm26prithviraj.bhatia@mastersunion.org" },
-  { icon: Phone, label: "+91 91115 61116", href: "tel:+919111561116" },
-  { icon: Linkedin, label: "Prithviraj Bhatia", href: "https://www.linkedin.com/in/prithviraj-bhatia/", italic: true },
-];
+const email = { icon: Mail, label: "tbm26prithviraj.bhatia@mastersunion.org", href: "mailto:tbm26prithviraj.bhatia@mastersunion.org" };
+const phone = { icon: Phone, label: "+91 91115 61116", href: "tel:+919111561116" };
+const linkedin = { icon: Linkedin, label: "Prithviraj Bhatia", href: "https://www.linkedin.com/in/prithviraj-bhatia/", italic: true };
 
 export default function Contact() {
   const [open, setOpen] = useState(false);
