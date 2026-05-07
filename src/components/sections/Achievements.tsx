@@ -27,9 +27,11 @@ function Card({ stat, label, img }: Item) {
       className="glass rounded-2xl overflow-hidden flex flex-col w-[300px] shrink-0 border border-transparent hover:border-primary/50"
     >
       {img ? (
-        <img src={img} alt="" className="w-full h-[120px] object-cover" loading="lazy" />
+        <div className="w-full aspect-square bg-background/40 flex items-center justify-center overflow-hidden">
+          <img src={img} alt="" className="max-w-full max-h-full object-contain" loading="lazy" />
+        </div>
       ) : (
-        <div className="w-full h-[120px] bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
+        <div className="w-full aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
           <span className="text-primary/60 font-display font-bold text-3xl">{stat}</span>
         </div>
       )}
