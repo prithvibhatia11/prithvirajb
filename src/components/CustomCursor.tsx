@@ -1,58 +1,74 @@
 import { useEffect, useRef } from "react";
 
-interface Particle { x: number; y: number; life: number; size: number; }
+interface Pt { x: number; y: number; t: number; }
+
+const TRAIL_MS = 600;
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);
   const canvasRef = useRef<HTMLCanvasElement>(null);
-  const particlesRef = useRef<Particle[]>([]);
-  const mouseRef = useRef({ x: -100, y: -100, hover: false });
+  const pointsRef = useRef<Pt[]>([]);
+  const hoverRef = useRef(false);
 
   useEffect(() => {
     if (window.matchMedia('(pointer: coarse)').matches) return;
     const canvas = canvasRef.current!;
     const ctx = canvas.getContext('2d')!;
+    const dpr = window.devicePixelRatio || 1;
     const resize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
+      canvas.width = window.innerWidth * dpr;
+      canvas.height = window.innerHeight * dpr;
+      canvas.style.width = window.innerWidth + 'px';
+      canvas.style.height = window.innerHeight + 'px';
+      ctx.scale(dpr, dpr);
     };
     resize();
     window.addEventListener('resize', resize);
 
-    let lastSpawn = 0;
     const onMove = (e: MouseEvent) => {
-      mouseRef.current.x = e.clientX;
-      mouseRef.current.y = e.clientY;
-      if (dotRef.current) {
-        dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%) scale(${mouseRef.current.hover ? 1.8 : 1})`;
-      }
       const now = performance.now();
-      if (now - lastSpawn > 16) {
-        particlesRef.current.push({ x: e.clientX, y: e.clientY, life: 1, size: 6 + Math.random() * 4 });
-        lastSpawn = now;
-      }
+      pointsRef.current.push({ x: e.clientX, y: e.clientY, t: now });
       const target = e.target as HTMLElement;
-      const hover = !!target.closest('a, button, [data-hover]');
-      mouseRef.current.hover = hover;
+      hoverRef.current = !!target.closest('a, button, [data-hover]');
+      if (dotRef.current) {
+        dotRef.current.style.transform = `translate(${e.clientX}px, ${e.clientY}px) translate(-50%, -50%) scale(${hoverRef.current ? 1.8 : 1})`;
+      }
     };
     window.addEventListener('mousemove', onMove);
 
     let raf = 0;
     const loop = () => {
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      const arr = particlesRef.current;
-      for (let i = arr.length - 1; i >= 0; i--) {
-        const p = arr[i];
-        p.life -= 0.035;
-        if (p.life <= 0) { arr.splice(i, 1); continue; }
-        const r = p.size * p.life;
-        const grad = ctx.createRadialGradient(p.x, p.y, 0, p.x, p.y, r * 3);
-        grad.addColorStop(0, `rgba(255,107,0,${0.55 * p.life})`);
-        grad.addColorStop(1, 'rgba(255,107,0,0)');
-        ctx.fillStyle = grad;
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, r * 3, 0, Math.PI * 2);
-        ctx.fill();
+      const now = performance.now();
+      const w = window.innerWidth;
+      const h = window.innerHeight;
+      ctx.clearRect(0, 0, w, h);
+      const pts = pointsRef.current.filter(p => now - p.t < TRAIL_MS);
+      pointsRef.current = pts;
+
+      if (pts.length >= 2) {
+        ctx.lineCap = 'round';
+        ctx.lineJoin = 'round';
+        // Glow pass (wider, faded)
+        for (let pass = 0; pass < 2; pass++) {
+          for (let i = 1; i < pts.length; i++) {
+            const a = pts[i - 1];
+            const b = pts[i];
+            const age = (now - b.t) / TRAIL_MS;
+            const alpha = Math.max(0, 1 - age);
+            if (alpha <= 0) continue;
+            ctx.beginPath();
+            ctx.moveTo(a.x, a.y);
+            ctx.lineTo(b.x, b.y);
+            if (pass === 0) {
+              ctx.strokeStyle = `rgba(255,107,0,${0.25 * alpha})`;
+              ctx.lineWidth = 8;
+            } else {
+              ctx.strokeStyle = `rgba(255,107,0,${alpha})`;
+              ctx.lineWidth = 2.5;
+            }
+            ctx.stroke();
+          }
+        }
       }
       raf = requestAnimationFrame(loop);
     };
