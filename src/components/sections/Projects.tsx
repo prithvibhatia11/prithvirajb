@@ -58,7 +58,7 @@ const projects: Project[] = [
     role: "End-to-end research, statistical analysis, consumer persona, GTM co-creation",
     assets: [
       { label: "See the Winning Deck", src: "/decks/samsara-deck.pdf" },
-      { label: "Where's the Proof?", src: "/decks/samsara-certificate.pdf" },
+      { label: "Certificate", src: "/decks/samsara-certificate.pdf" },
     ],
   },
 ];
@@ -115,7 +115,7 @@ export default function Projects() {
                       className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 pointer-events-none transition-all duration-500"
                       style={{
                         width: isExp ? "45%" : "70%",
-                        opacity: isExp ? 0.22 : 0.18,
+                        opacity: isExp ? 0.12 : 0.1,
                       }}
                     />
                     <div className="relative z-10 p-6 md:p-8">
