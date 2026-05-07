@@ -2,7 +2,7 @@ import { useEffect, useRef } from "react";
 
 interface Pt { x: number; y: number; t: number; }
 
-const TRAIL_MS = 600;
+const TRAIL_MS = 320;
 
 export default function CustomCursor() {
   const dotRef = useRef<HTMLDivElement>(null);

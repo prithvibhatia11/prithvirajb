@@ -15,7 +15,7 @@ const items: Item[] = [
   { stat: "5S", label: "Champ, Two consecutive months, Kalpataru Limited, 150+ employees", img: "/achievements/achievement-10.png" },
   { stat: "₹300Cr+", label: "Risk identified, Bank Guarantee discrepancy, Western Coalfields Ltd", img: "/achievements/achievement-1.png" },
   { stat: "10/10", label: "CGPA Class 10, Top 2% among 16L+ CBSE students, felicitated by Dainik Bhaskar" },
-  { stat: "25%", label: "Merit scholarship, Masters' Union PGP TBM" },
+  { stat: "25%", label: "Merit scholarship, Masters' Union PGP TBM", img: "/achievements/achievement-9.png" },
   { stat: "250+", label: "Students, attended voluntary statistics lectures at Masters' Union" },
 ];
 
