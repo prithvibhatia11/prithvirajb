@@ -4,19 +4,18 @@ import { ChevronLeft, ChevronRight } from "lucide-react";
 
 interface Item { stat: string; label: string; img?: string; }
 
-// Reordered: 2,3,4,5,6,7,10,1,8,9,11 (push 8/9/11 to end, push 1 to 4th-last)
 const items: Item[] = [
   { stat: "₹70L", label: "D2C revenue, Sort'd Enterprises, built from scratch in under 6 months", img: "/achievements/achievement-2.png" },
   { stat: "₹30L", label: "in 24 days, Masters' Union founder challenge, only team to accept and complete", img: "/achievements/achievement-3.png" },
   { stat: "1st", label: "Place, Blue Tokai live project, 200+ participants", img: "/achievements/achievement-4.png" },
   { stat: "2nd", label: "Runner-up, Samsara Gin market research, 60+ teams", img: "/achievements/achievement-5.png" },
-  { stat: "CA", label: "Cleared first attempt, November 2023, one of the lowest-passing attempts", img: "/achievements/achievement-6.png" },
-  { stat: "Rank 1", label: "District PCM, Rajnandgaon, Class 12, 2018", img: "/achievements/achievement-7.png" },
-  { stat: "5S", label: "Champ, Two consecutive months, Kalpataru Limited, 150+ employees", img: "/achievements/achievement-10.png" },
-  { stat: "₹300Cr+", label: "Risk identified, Bank Guarantee discrepancy, Western Coalfields Ltd", img: "/achievements/achievement-1.png" },
-  { stat: "10/10", label: "CGPA Class 10, Top 2% among 16L+ CBSE students, felicitated by Dainik Bhaskar" },
   { stat: "25%", label: "Merit scholarship, Masters' Union PGP TBM", img: "/achievements/achievement-9.png" },
+  { stat: "₹300Cr+", label: "Risk identified, Bank Guarantee discrepancy, Western Coalfields Ltd", img: "/achievements/achievement-1.png" },
+  { stat: "5S", label: "Champ, Two consecutive months, Kalpataru Limited, 150+ employees", img: "/achievements/achievement-10.png" },
+  { stat: "CA", label: "Cleared first attempt, November 2023, one of the lowest-passing attempts in recent years", img: "/achievements/achievement-6.png" },
   { stat: "250+", label: "Students, attended voluntary statistics lectures at Masters' Union" },
+  { stat: "Rank 1", label: "District PCM, Rajnandgaon, Class 12, 2018", img: "/achievements/achievement-7.png" },
+  { stat: "10/10", label: "CGPA Class 10, Top 2% among 16L+ CBSE students, felicitated by Dainik Bhaskar" },
 ];
 
 function Card({ stat, label, img }: Item) {

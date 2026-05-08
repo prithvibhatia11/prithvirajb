@@ -72,7 +72,7 @@ export default function Contact() {
                     className="group inline-flex items-center gap-2 text-foreground/85 hover:text-primary transition-colors"
                   >
                     <linkedin.icon className="h-5 w-5 text-primary" />
-                    <span className="italic underline">{linkedin.label}</span>
+                    <span className="italic underline underline-offset-4">{linkedin.label}</span>
                   </motion.a>
                 )}
               </AnimatePresence>
@@ -100,7 +100,7 @@ export default function Contact() {
                     className="group inline-flex items-center gap-2 text-foreground/85 hover:text-primary transition-colors"
                   >
                     <phone.icon className="h-5 w-5 text-primary" />
-                    <span>{phone.label}</span>
+                    <span className="underline underline-offset-4">{phone.label}</span>
                   </motion.a>
                 )}
               </AnimatePresence>
@@ -126,7 +126,7 @@ export default function Contact() {
                   className="group inline-flex items-center gap-2 text-foreground/85 hover:text-primary transition-colors"
                 >
                   <email.icon className="h-5 w-5 text-primary" />
-                  <span>{email.label}</span>
+                  <span className="underline underline-offset-4">{email.label}</span>
                 </motion.a>
               </motion.div>
             )}
