@@ -14,7 +14,7 @@ const items: Item[] = [
   { stat: "5S", label: "Champ, Two consecutive months, Kalpataru Limited, 150+ employees", img: "/achievements/achievement-10.png" },
   { stat: "CA", label: "Cleared first attempt, November 2023, one of the lowest-passing attempts in recent years", img: "/achievements/achievement-6.png" },
   { stat: "250+", label: "Students, attended voluntary statistics lectures at Masters' Union" },
-  { stat: "Rank 1", label: "District PCM, Rajnandgaon, Class 12, 2018", img: "/achievements/achievement-7.png" },
+  { stat: "Rank 1", label: "District topper, PCM, Rajnandgaon, Class 12, 2018" },
   { stat: "10/10", label: "CGPA Class 10, Top 2% among 16L+ CBSE students, felicitated by Dainik Bhaskar" },
 ];
 
