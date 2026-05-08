@@ -53,7 +53,7 @@ const projects: Project[] = [
     duration: "January 2026",
     one: "Runner-up among 60+ teams, rigorous market research to crack why Indian consumers default to foreign brands for premium gin.",
     story: "End-to-end research process, secondary research, in-depth interviews, focused group discussions. Built a 5-point interval scale survey with 100+ responses and ran factor analysis, chi-square tests, and cluster analysis to identify super-variables and consumer clusters. Built a full GTM strategy covering digital awareness, on-trade activation, and high-status placements.",
-    metrics: ["100+ Survey Responses", "60+ Teams", "Runner-up"],
+    metrics: ["60+ Teams", "Runner-up"],
     result: "🥈 Runner-up, Certified by Masters' Union",
     role: "End-to-end research, statistical analysis, consumer persona, GTM co-creation",
     assets: [
