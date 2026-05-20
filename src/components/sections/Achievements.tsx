@@ -18,7 +18,7 @@ const items: Item[] = [
   { stat: "10/10", label: "CGPA Class 10, Top 2% among 16L+ CBSE students, felicitated by Dainik Bhaskar" },
 ];
 
-function Card({ stat, label, img }: Item) {
+function Card({ stat, label, img, blend }: Item) {
   return (
     <motion.div
       whileHover={{ y: -6, scale: 1.02, boxShadow: "0 20px 40px -10px rgba(255,107,0,0.35)" }}
@@ -27,7 +27,7 @@ function Card({ stat, label, img }: Item) {
     >
       {img ? (
         <div className="w-full aspect-square bg-background/40 flex items-center justify-center overflow-hidden">
-          <img src={img} alt="" className="max-w-full max-h-full object-contain" loading="lazy" />
+          <img src={img} alt="" className={`max-w-full max-h-full object-contain ${blend ? 'mix-blend-screen' : ''}`} loading="lazy" />
         </div>
       ) : (
         <div className="w-full aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
