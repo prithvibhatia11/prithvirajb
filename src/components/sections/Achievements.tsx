@@ -2,10 +2,10 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface Item { stat: string; label: string; img?: string; }
+interface Item { stat: string; label: string; img?: string; blend?: boolean; }
 
 const items: Item[] = [
-  { stat: "₹70L", label: "D2C revenue, Sort'd Enterprises, built from scratch in under 6 months", img: "/achievements/achievement-2.png" },
+  { stat: "₹70L", label: "D2C revenue, Sort'd Enterprises, built from scratch in under 6 months", img: "/achievements/achievement-sortd.png", blend: true },
   { stat: "₹30L", label: "in 24 days, Masters' Union founder challenge, only team to accept and complete", img: "/achievements/achievement-3.png" },
   { stat: "1st", label: "Place, Blue Tokai live project, 200+ participants", img: "/achievements/achievement-4.png" },
   { stat: "2nd", label: "Runner-up, Samsara Gin market research, 60+ teams", img: "/achievements/achievement-5.png" },
