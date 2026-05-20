@@ -2,10 +2,10 @@ import { useRef, useState } from "react";
 import { motion } from "framer-motion";
 import { ChevronLeft, ChevronRight } from "lucide-react";
 
-interface Item { stat: string; label: string; img?: string; }
+interface Item { stat: string; label: string; img?: string; blend?: boolean; }
 
 const items: Item[] = [
-  { stat: "₹70L", label: "D2C revenue, Sort'd Enterprises, built from scratch in under 6 months", img: "/achievements/achievement-2.png" },
+  { stat: "₹70L", label: "D2C revenue, Sort'd Enterprises, built from scratch in under 6 months", img: "/achievements/achievement-sortd.png", blend: true },
   { stat: "₹30L", label: "in 24 days, Masters' Union founder challenge, only team to accept and complete", img: "/achievements/achievement-3.png" },
   { stat: "1st", label: "Place, Blue Tokai live project, 200+ participants", img: "/achievements/achievement-4.png" },
   { stat: "2nd", label: "Runner-up, Samsara Gin market research, 60+ teams", img: "/achievements/achievement-5.png" },
@@ -18,7 +18,7 @@ const items: Item[] = [
   { stat: "10/10", label: "CGPA Class 10, Top 2% among 16L+ CBSE students, felicitated by Dainik Bhaskar" },
 ];
 
-function Card({ stat, label, img }: Item) {
+function Card({ stat, label, img, blend }: Item) {
   return (
     <motion.div
       whileHover={{ y: -6, scale: 1.02, boxShadow: "0 20px 40px -10px rgba(255,107,0,0.35)" }}
@@ -27,7 +27,7 @@ function Card({ stat, label, img }: Item) {
     >
       {img ? (
         <div className="w-full aspect-square bg-background/40 flex items-center justify-center overflow-hidden">
-          <img src={img} alt="" className="max-w-full max-h-full object-contain" loading="lazy" />
+          <img src={img} alt="" className={`max-w-full max-h-full object-contain ${blend ? 'mix-blend-screen' : ''}`} loading="lazy" />
         </div>
       ) : (
         <div className="w-full aspect-square bg-gradient-to-br from-primary/20 to-primary/5 flex items-center justify-center">
